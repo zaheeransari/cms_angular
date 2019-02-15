@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Speakers } from '../../model/speakers';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { PartialSpeakerFormComponent } from 'src/app/partial/partial-speaker-form/partial-speaker-form.component';
+import { SpeakersFormComponent } from './speakers-form/speakers-form.component';
 
 @Component({
   selector: 'app-speakers-list',
@@ -43,11 +44,15 @@ export class SpeakersListComponent implements OnInit {
   }
 
   showItem(items: Speakers) {
+    debugger;
     const initialState = { items };
     this.bsmodalRef = this.bsmodalService.show(PartialSpeakerFormComponent, { initialState });
     this.bsmodalRef.content.closeBtnName = 'Close';
     console.log(initialState);
-    
+    //this._router.navigate(['/speakerform/Edit']);
+  }
+  spkItem(item: Speakers){
+    debugger;
   }
 
   view(id) {

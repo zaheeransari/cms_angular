@@ -11,6 +11,7 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./partial-speaker-form.component.css']
 })
 export class PartialSpeakerFormComponent implements OnInit {
+
   items: Speakers;
   speakerForm: any;
   loading = false;
@@ -18,7 +19,7 @@ export class PartialSpeakerFormComponent implements OnInit {
   constructor(
     private rest: RestService,
     public fb: FormBuilder,
-    private router:Router,
+    private router: Router,
     private bsmodalRef: BsModalRef
   ) { }
 
@@ -38,30 +39,19 @@ export class PartialSpeakerFormComponent implements OnInit {
     });
   }
   GetSpeakersItem() {
-    this.speakerForm.patchValue({
-      Speaker_ID: this.items.Speaker_ID,
-      Speaker_name: this.items.Speaker_name,
-      Speaker_designation: this.items.Speaker_designation,
-      Speaker_description: this.items.Speaker_description,
-      Speaker_Priority: this.items.Speaker_Priority,
-      Status: this.items.Status
-    })
+    this.speakerForm.patchValue(this.items)
   }
   SaveSpeaker() {
-    debugger;
     if (this.speakerForm.valid) {
       this.loading = true;
-      this.rest.put('Speakers/Put', this.speakerForm.value)
+      Object.assign(this.items, this.speakerForm.value)
+      this.rest.put('Speakers/Put', this.items)
         .subscribe(res => {
+          debugger;
           this.loading = false;
-          this.allclear();          
+          this.allclear();
         })
     }
-  }
-  clickClose(){
-    debugger;
-    this.bsmodalRef.hide();
-    this.router.navigateByUrl("speakers");
   }
   allclear() {
     this.speakerForm.reset({

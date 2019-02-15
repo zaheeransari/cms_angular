@@ -7,7 +7,8 @@ import { SpeakersListComponent } from './admin/speakers-list/speakers-list.compo
 const routes: Routes = [
   { path: "", component: UserListComponent },
   { path: "speakers", component: SpeakersListComponent },
-  { path: "speakerform", component: SpeakersFormComponent }
+  { path: "speakerform", component: SpeakersFormComponent },
+  { path: "speakerform/Edit", component: SpeakersFormComponent }
 ];
 
 

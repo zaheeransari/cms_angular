@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">show result</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="clickClose()">
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsmodalRef.hide()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -8,8 +8,8 @@
   <form [formGroup]="speakerForm" (submit)="SaveSpeaker()">
     <div class="row space">
       <!-- <div class="col-8">
-            <app-country-list></app-country-list>
-          </div> -->
+        <app-country-list></app-country-list>
+      </div> -->
       <div class="col-8">
         <div class="form-group">
           <label class="form-control-label">Name</label>
@@ -54,5 +54,5 @@
   <p> {{ items | json}}</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-default" (click)="clickClose()">close</button>
+  <button type="button" class="btn btn-default" (click)="bsmodalRef.hide()">close</button>
 </div>

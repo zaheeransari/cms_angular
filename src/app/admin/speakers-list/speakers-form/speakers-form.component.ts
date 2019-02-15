@@ -3,6 +3,7 @@ import { RestService } from 'src/app/services/rest.service';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/ngx-bootstrap-datepicker';
+import { Speakers } from 'src/app/model/speakers';
 
 @Component({
   selector: 'app-speakers-form',
@@ -10,7 +11,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/ngx-bootstrap-datep
   styleUrls: ['./speakers-form.component.css']
 })
 export class SpeakersFormComponent implements OnInit {
-
+  items: Speakers;
   ReciterPath; image;
   loading = false;
   speakerForm: any;
@@ -28,14 +29,23 @@ export class SpeakersFormComponent implements OnInit {
     private _avRoute: ActivatedRoute
   ) {
 
-    if (_avRoute.snapshot.params["id"]) {
-      this.id = parseInt(this._avRoute.snapshot.params["id"]);
-      this.getSpeakers(this.id);
+    // if (_avRoute.snapshot.params["id"]) {
+    //   this.id = parseInt(this._avRoute.snapshot.params["id"]);
+    //   this.getSpeakers(this.id);
+    // }
+    if (this.items != null) {
+      debugger;
+      this.GetSpeakersItem();
     }
   }
 
   ngOnInit() {
-    
+    debugger;
+    this.items;
+    this.InitialSpeakersItem();
+  }
+
+  InitialSpeakersItem() {
     this.speakerForm = this.fb.group({
       Speaker_ID: [],
       Speaker_name: [],
@@ -46,22 +56,15 @@ export class SpeakersFormComponent implements OnInit {
       CountryId: []
     });
   }
-
-  getSpeakers(id) {
-    debugger;
-    this.rest.fetch("Speakers/GetbyId/" + this.id)
-      .subscribe(data => {
-        this.speakersData = data;
-        console.log(data);
-        this.speakerForm.patchValue({
-          Speaker_ID: data.Speaker_ID,
-          Speaker_name: data.Speaker_name,
-          Speaker_designation: data.Speaker_designation,
-          Speaker_description: data.Speaker_description,
-          Speaker_Priority: data.Speaker_Priority,
-          Status: data.Status
-        })
-      })
+  GetSpeakersItem() {
+    this.speakerForm.patchValue({
+      Speaker_ID: this.items.Speaker_ID,
+      Speaker_name: this.items.Speaker_name,
+      Speaker_designation: this.items.Speaker_designation,
+      Speaker_description: this.items.Speaker_description,
+      Speaker_Priority: this.items.Speaker_Priority,
+      Status: this.items.Status
+    })
   }
 
   SaveSpeaker() {
