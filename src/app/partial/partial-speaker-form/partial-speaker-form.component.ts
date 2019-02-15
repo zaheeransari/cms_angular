@@ -42,12 +42,12 @@ export class PartialSpeakerFormComponent implements OnInit {
     this.speakerForm.patchValue(this.items)
   }
   SaveSpeaker() {
+    debugger;
     if (this.speakerForm.valid) {
       this.loading = true;
       Object.assign(this.items, this.speakerForm.value)
       this.rest.put('Speakers/Put', this.items)
         .subscribe(res => {
-          debugger;
           this.loading = false;
           this.allclear();
         })

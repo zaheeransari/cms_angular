@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UserListComponent } from './admin/user-list/user-list.component';
 import { RestService } from './services/rest.service';
@@ -35,6 +35,7 @@ import { PartialSpeakerFormComponent } from './partial/partial-speaker-form/part
     HttpClientModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    TypeaheadModule.forRoot(),
     FormsModule,ReactiveFormsModule,
   ],
   entryComponents: [

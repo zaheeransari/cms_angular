@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Speakers } from '../../model/speakers';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { PartialSpeakerFormComponent } from 'src/app/partial/partial-speaker-form/partial-speaker-form.component';
-import { SpeakersFormComponent } from './speakers-form/speakers-form.component';
 
 @Component({
   selector: 'app-speakers-list',

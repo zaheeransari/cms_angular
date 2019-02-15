@@ -2,13 +2,10 @@
   <div class="row space">
     <div class="col-8">
       <div class="form-group">
-        <label class="form-control-label">Country List</label>
-        <select class="hideLabel form-control" [formControlName]="'CountryId'">
-          <option selected="0" value="0">---Select CountryName---</option>
-          <option *ngFor="let cnt of CountryData" value="{{cnt.CountryId}}" selected="{{cnt.CountryId == CountryId}}">
-            {{ cnt.CountryName }}
-          </option>
-        </select>
+        <input type="text" 
+        formControlName="CountryId"
+        [typeahead]="countryItem" 
+        typeaheadOptionField="CountryName">
       </div>
     </div>
   </div>
