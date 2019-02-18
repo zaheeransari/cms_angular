@@ -2,10 +2,8 @@
   <div class="row space">
     <div class="col-8">
       <div class="form-group">
-        <input type="text" 
-        formControlName="CountryId"
-        [typeahead]="countryItem" 
-        typeaheadOptionField="CountryName">
+        <input type="text" formControlName="CountryName" [typeahead]="countryItem"
+          (typeaheadOnSelect)="typeaheadOnSelect($event)" typeaheadOptionField="CountryName">
       </div>
     </div>
   </div>

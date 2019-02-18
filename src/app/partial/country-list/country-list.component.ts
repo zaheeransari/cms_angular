@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
+import { Country } from 'src/app/model/country';
 
 @Component({
   selector: 'app-country-list',
@@ -8,13 +9,8 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./country-list.component.css']
 })
 export class CountryListComponent implements OnInit {
-
   CountryForm: FormGroup;
-
-  selectedValue: string;
-  selectedOption: any;
-
-  
+  countryitem: Country;
   @Output() formReady = new EventEmitter<FormGroup>()
   countryItem: Array<any>[];
 
@@ -28,6 +24,12 @@ export class CountryListComponent implements OnInit {
 
     this.formReady.emit(this.CountryForm);
     this.GetCountry();
+  }
+  typeaheadOnSelect($event) {
+    this.countryitem = $event.item;
+    Object.assign(this.CountryForm.value, this.countryitem)
+
+    console.log($event.item);
   }
   GetCountry() {
     this.rest.fetch("Country/Get")

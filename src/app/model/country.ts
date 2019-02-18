@@ -1,4 +1,4 @@
 export class Country {
     CountryId: string;
-    CountryName:string;
+    CountryName: string;
 } 

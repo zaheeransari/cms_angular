@@ -3,4 +3,4 @@ export class Users {
     url: string;
     created_at: string;
     author: string;
-} 
+}

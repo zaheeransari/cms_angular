@@ -31,7 +31,7 @@ import { RegistrationFormComponent } from './admin/registration-list/registratio
     CountryListComponent,
     PartialSpeakerFormComponent,
     RegistrationListComponent,
-    RegistrationFormComponent,
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
