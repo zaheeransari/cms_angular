@@ -13,7 +13,7 @@ import { Country } from 'src/app/model/country';
 })
 export class RegistrationFormComponent implements OnInit {
   item: Registration;
-  shipping: Country;
+  countrydata: Country;
   registrationForm: any;
   commonitem: CommonItem;
   constructor(
@@ -27,7 +27,6 @@ export class RegistrationFormComponent implements OnInit {
     this.InitialRegisterItem();
   }
   formInitialized(name: string, form: FormGroup) {
-    debugger;
     this.registrationForm.setControl(name, form);
   }
   InitialRegisterItem() {
@@ -42,11 +41,12 @@ export class RegistrationFormComponent implements OnInit {
   }
   SaveRegistration() {
     debugger;
-    this.commonitem.loading = Object.assign({}, true);
+    //this.commonitem.loading = Object.assign({}, true);
+    //Object.assign(this.commonitem.loading, true)
     if (this.registrationForm.valid) {
       this.item = Object.assign({}, this.registrationForm.value);
-      this.shipping = Object.assign({}, this.registrationForm.value.shipping);
-      this.item.CountryId = this.shipping.CountryId;
+      this.countrydata = Object.assign({}, this.registrationForm.value.countrydata);
+      this.item.CountryId = this.countrydata.CountryId;
       this.rest.post('Registration/Post', this.item)
         .subscribe(data => {
           this.commonitem.loading = false;

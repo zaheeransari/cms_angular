@@ -17,20 +17,23 @@ export class CountryListComponent implements OnInit {
   constructor(private rest: RestService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.InitializationCountry();
+    this.GetCountry();
+    this.formReady.emit(this.CountryForm);
+  }
+  InitializationCountry() {
     this.CountryForm = this.fb.group({
       CountryId: [],
       CountryName: []
     });
-
-    this.formReady.emit(this.CountryForm);
-    this.GetCountry();
   }
   typeaheadOnSelect($event) {
     this.countryitem = $event.item;
     Object.assign(this.CountryForm.value, this.countryitem)
-
-    console.log($event.item);
+    
+    //console.log($event.item);
   }
+
   GetCountry() {
     this.rest.fetch("Country/Get")
       .subscribe(item => {
