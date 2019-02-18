@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Users } from '../../model/users';
 import { RestService } from '../../services/rest.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
-import { ShowJsonComponent } from '../show-json/show-json.component';
+import { ShowJsonComponent } from 'src/app/partial/show-json/show-json.component';
 
 @Component({
   selector: 'app-user-list',

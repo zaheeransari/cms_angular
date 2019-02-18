@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { RestService } from 'src/app/services/rest.service';
 
@@ -9,7 +9,13 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class CountryListComponent implements OnInit {
 
-  @Input() CountryForm: any;
+  CountryForm: FormGroup;
+
+  selectedValue: string;
+  selectedOption: any;
+
+  
+  @Output() formReady = new EventEmitter<FormGroup>()
   countryItem: Array<any>[];
 
   constructor(private rest: RestService, private fb: FormBuilder) { }
@@ -19,6 +25,8 @@ export class CountryListComponent implements OnInit {
       CountryId: [],
       CountryName: []
     });
+
+    this.formReady.emit(this.CountryForm);
     this.GetCountry();
   }
   GetCountry() {

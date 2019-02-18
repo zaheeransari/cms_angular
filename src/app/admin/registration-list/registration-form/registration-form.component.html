@@ -1,31 +1,35 @@
 <div class="container">
   <div class="card-body">
-    <form [formGroup]="speakerForm" (submit)="SaveSpeaker()">
+    <form [formGroup]="registrationForm" (submit)="SaveRegistration()">
       <div class="row space">
-
-        <!-- <div class="col-8">
-          <div class="form-group">
-            <label class="form-control-label">Country List</label>
-            <app-country-list [speakerForm]="speakerForm"></app-country-list>
-          </div>
-        </div> -->
-
         <div class="col-8">
           <div class="form-group">
-            <label class="form-control-label">Name</label>
-            <input type="text" class="form-control" formControlName="Speaker_name">
+            <label class="form-control-label">Country List</label>
+            <app-country-list (formReady)="formInitialized('shipping', $event)"></app-country-list>    
           </div>
         </div>
         <div class="col-8">
           <div class="form-group">
-            <label class="form-control-label">Designation</label>
-            <input type="text" class="form-control" formControlName="Speaker_designation">
+            <label class="form-control-label">Name</label>
+            <input type="text" class="form-control" formControlName="RegisterName">
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <label class="form-control-label">Email</label>
+            <input type="text" class="form-control" formControlName="RegisterEmail">
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <label class="form-control-label">Mobile No</label>
+            <input type="text" class="form-control" formControlName="RegisterMobile">
           </div>
         </div>
         <div class="col-8">
           <div class="form-group">
             <label class="form-control-label">Description</label>
-            <input type="text" class="form-control" formControlName="Speaker_description">
+            <input type="text" class="form-control" formControlName="RegisterDescription">
           </div>
         </div>
         <!-- <div class="col-6">
@@ -39,7 +43,6 @@
           <div class="form-group">
             <label class="form-control-label">Status</label>
             <select class="hideLabel form-control" formControlName="Status">
-
               <option *ngFor="let ac of ActiveStatus" value="{{ac.Status}}" selected="{{ac.Status == Status}}">
                 {{ ac.name }}
               </option>
@@ -48,12 +51,12 @@
         </div>
         <div class="col-8">
           <input type="submit" class="addbtn" value="Save" />
-          <a routerLink="/admin/speaker" class="cancelbtn">Cancel</a>
+          <a routerLink="/registration" class="cancelbtn">Cancel</a>
         </div>
       </div>
     </form>
   </div>
   <pre>
-    {{speakerForm.value| json}}
+    {{registrationForm.value| json}}
   </pre>
 </div>

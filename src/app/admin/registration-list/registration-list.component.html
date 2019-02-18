@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registration List</h5>
+          <h5 class="card-title header-text right add-button">
+            <input type="text" [(ngModel)]="SearchText" style="float: right">
+            <a class="addbtn" routerLink="/registrationform">Add List</a>
+          </h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Registration Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of regItem  | filterdata:SearchText:'RegisterName'">
+                <th scope="row">{{item.RegisterId}}</th>
+                <td>{{item.RegisterName}}</td>
+                <td>{{item.RegisterEmail}}</td>
+                <td>{{item.RegisterMobile}}</td>
+                <td><a class="btn-def cursor">
+                    <i class=" fa fa-pencil-alt"></i>Edit</a></td>
+              </tr>
+              <tr>
+                <td colspan="7" style="text-align: center;padding: 30px;">
+                  <div style="height: 370px;" *ngIf="loading">
+                    <div class="loadercss">
+                      <img src="../../../assets/loadergif.gif">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination" *ngFor="let page of PageSize;">
+                      <li class="page-item"><a class="page-link" (click)="onClickPage(page)">{{page}}</a></li>
+                    </ul>
+                  </nav>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
