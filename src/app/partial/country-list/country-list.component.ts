@@ -10,9 +10,8 @@ import { Country } from 'src/app/model/country';
 })
 export class CountryListComponent implements OnInit {
   CountryForm: FormGroup;
-  countryitem: Country;
+  countryItem: Country;
   @Output() formReady = new EventEmitter<FormGroup>()
-  countryItem: Array<any>[];
 
   constructor(private rest: RestService, private fb: FormBuilder) { }
 
@@ -27,17 +26,15 @@ export class CountryListComponent implements OnInit {
       CountryName: []
     });
   }
-  typeaheadOnSelect($event) {
-    this.countryitem = $event.item;
-    Object.assign(this.CountryForm.value, this.countryitem)
-    
-    //console.log($event.item);
-  }
-
   GetCountry() {
     this.rest.fetch("Country/Get")
       .subscribe(item => {
         this.countryItem = item;
       });
   }
+  typeaheadOnSelect($event) {
+    this.countryItem = $event.item;
+    Object.assign(this.CountryForm.value, this.countryItem)    
+    //console.log($event.item);
+  }  
 }

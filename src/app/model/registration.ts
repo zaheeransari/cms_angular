@@ -1,5 +1,5 @@
 export class Registration {
-   public RegisterId: Number = 0;
+   public RegisterId: Number;
    public RegisterName: string;
    public RegisterDescription: string;
    public RegisterMobile: string;

@@ -22,6 +22,7 @@ export class UserListComponent implements OnInit {
     }, 10000)
   }
   getUser() {
+    debugger;
     this.rest.fetchdata("https://hn.algolia.com/api/v1/search_by_date?tags=story")
       .subscribe((res: any) => {
         this.userItem = res.hits;
