@@ -6,6 +6,8 @@ import { SpeakersListComponent } from './admin/speakers-list/speakers-list.compo
 import { CountryListComponent } from './partial/country-list/country-list.component';
 import { RegistrationListComponent } from './admin/registration-list/registration-list.component';
 import { RegistrationFormComponent } from './admin/registration-list/registration-form/registration-form.component';
+import { ProductFormComponent } from './admin/product-list/product-form/product-form.component';
+import { ProductListComponent } from './admin/product-list/product-list.component';
 
 const routes: Routes = [
   { path: "", component: UserListComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: "country", component: CountryListComponent },
   { path: "registration", component: RegistrationListComponent },
   { path: "registrationform", component: RegistrationFormComponent },
+  { path: "product", component: ProductListComponent },
+  { path: "productform", component: ProductFormComponent },
 ];
 
 

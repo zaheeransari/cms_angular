@@ -18,6 +18,9 @@ import { CountryListComponent } from './partial/country-list/country-list.compon
 import { PartialSpeakerFormComponent } from './partial/partial-speaker-form/partial-speaker-form.component';
 import { RegistrationListComponent } from './admin/registration-list/registration-list.component';
 import { RegistrationFormComponent } from './admin/registration-list/registration-form/registration-form.component';
+import { DemoComponent } from './demo/demo.component';
+import { ProductListComponent } from './admin/product-list/product-list.component';
+import { ProductFormComponent } from './admin/product-list/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { RegistrationFormComponent } from './admin/registration-list/registratio
     CountryListComponent,
     PartialSpeakerFormComponent,
     RegistrationListComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    DemoComponent,
+    ProductListComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

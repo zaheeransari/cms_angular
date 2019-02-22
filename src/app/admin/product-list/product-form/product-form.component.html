@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card-body">
+    <form [formGroup]="productForm" (submit)="SaveProduct()">
+      <div formArrayName="product" *ngFor="let item of productForm.controls['product'].controls; let i=index">
+        <div [formGroupName]="i">
+          <div class="row space">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="form-control-label">Name</label>
+                <input type="text" class="form-control" formControlName="ProductName">
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label class="form-control-label">Product Desc</label>
+                <input type="text" class="form-control" formControlName="ProductDesc">
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label class="form-control-label">Product Amount</label>
+                <input type="text" class="form-control" formControlName="ProductAmount">
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group">
+                <button type="button" (click)="addNext()">Add Next</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <input type="submit" class="addbtn" value="Save" />
+        <a routerLink="/registration" class="cancelbtn">Cancel</a>
+      </div>
+    </form>
+  </div>
+  <pre>
+    {{registrationForm.value| json}}
+  </pre>
+</div>

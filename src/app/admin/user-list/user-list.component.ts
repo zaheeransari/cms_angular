@@ -4,6 +4,7 @@ import { RestService } from '../../services/rest.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { ShowJsonComponent } from 'src/app/partial/show-json/show-json.component';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -15,7 +16,8 @@ export class UserListComponent implements OnInit {
   bsModalref: BsModalRef;
   constructor(private rest: RestService, private bsmodalservice: BsModalService) { }
 
-  ngOnInit() {
+  ngOnInit() {   
+
     this.getUser();
     setInterval(() => {
       this.getUser();
